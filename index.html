@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>やることリスト</title>
+  <style>
+    li {
+      margin-bottom: 10px;
+    }
+    .done {
+      text-decoration: line-through;
+      color: gray;
+    }
+    button {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>やることリスト</h1>
+  <input type="text" id="todoInput" placeholder="やることを入力" />
+  <button onclick="addTodo()">追加</button>
+
+  <ul id="todoList"></ul>
+
+  <script>
+    function addTodo() {
+      const input = document.getElementById('todoInput');
+      const todoText = input.value;
+      if (todoText === '') return;
+
+      const li = document.createElement('li');
+      li.textContent = todoText;
+
+      // 完了ボタン
+      const doneButton = document.createElement('button');
+      doneButton.textContent = '完了';
+      doneButton.onclick = () => {
+        li.classList.toggle('done');
+      };
+
+      // 削除ボタン
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = '削除';
+      deleteButton.onclick = () => {
+        li.remove();
+      };
+
+      li.appendChild(doneButton);
+      li.appendChild(deleteButton);
+
+      document.getElementById('todoList').appendChild(li);
+      input.value = '';
+    }
+
+    <a href="index.html">
+  <button>自己紹介ページへ</button>
+</a>
+
+  </script>
+</body>
+</html>
+
+<style>
+    body {
+      font-family: "Helvetica Neue", sans-serif;
+      background: #f9f9f9;
+      padding: 40px;
+      text-align: center;
+    }
+  
+    h1 {
+      color: #333;
+    }
+  
+    input[type="text"] {
+      padding: 10px;
+      width: 200px;
+      font-size: 16px;
+    }
+  
+    button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+  
+    li {
+      background: white;
+      margin: 10px auto;
+      padding: 10px;
+      width: 300px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .done {
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
+
+<script>
+    let todos = [];
+  
+    function loadTodos() {
+      const saved = localStorage.getItem('todos');
+      if (saved) {
+        todos = JSON.parse(saved);
+        todos.forEach(todo => addTodo(todo, false));
+      }
+    }
+  
+    function saveTodos() {
+      localStorage.setItem('todos', JSON.stringify(todos));
+    }
+  
+    function addTodo(text = null, save = true) {
+      const input = document.getElementById('todoInput');
+      const todoText = text || input.value;
+      if (todoText === '') return;
+  
+      const li = document.createElement('li');
+      li.textContent = todoText;
+  
+      const doneButton = document.createElement('button');
+      doneButton.textContent = '完了';
+      doneButton.onclick = () => {
+        li.classList.toggle('done');
+      };
+  
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = '削除';
+      deleteButton.onclick = () => {
+        li.remove();
+        todos = todos.filter(t => t !== todoText);
+        saveTodos();
+      };
+  
+      li.appendChild(doneButton);
+      li.appendChild(deleteButton);
+  
+      document.getElementById('todoList').appendChild(li);
+  
+      if (save) {
+        todos.push(todoText);
+        saveTodos();
+      }
+  
+      input.value = '';
+    }
+  
+    window.onload = loadTodos;
+  </script>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", sans-serif;
+      background: #f9f9f9;
+      padding: 40px;
+      text-align: center;
+    }
+  
+    h1 {
+      color: #333;
+    }
+  
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      max-width: 300px;
+      font-size: 16px;
+    }
+  
+    button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      width: 100px;
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+  
+    li {
+      background: white;
+      margin: 10px auto;
+      padding: 10px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
+
+
+
+<style>
+    h1 {
+      animation: fadeIn 2s ease-in-out;
+    }
+  
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+
+
+<style>
+    body {
+      font-family: "Arial", sans-serif;
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      color: #333;
+      text-align: center;
+      padding: 50px;
+    }
+  
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+  
+    p {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+  
+    img {
+      border-radius: 50%;
+      margin-top: 20px;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+  
+    a button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  
+    a button:hover {
+      background-color: #eee;
+    }
+  </style>
+  
+  
+  
+  
+
