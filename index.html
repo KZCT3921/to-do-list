@@ -22,6 +22,8 @@
   <input type="text" id="todoInput" placeholder="やることを入力" />
   <button onclick="addTodo()">追加</button>
 
+
+
   <ul id="todoList"></ul>
 
   <script>
@@ -360,4 +362,60 @@
       right: 20px;
     }
   </style>
+
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>右上ハンバーガーメニュー</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    .menu-button {
+      position: fixed; /* 固定する！ */
+      top: 10px;        /* 上から10px */
+      right: 30px;      /* 右から10px */
+      font-size: 55px;
+      cursor: pointer;
+      z-index: 1000;    /* 最前面に */
+    }
+    .menu {
+      display: none;
+      background-color: #eee;
+      position: fixed;
+      top: 80px;
+      right: 10px;
+      padding: 10px;
+      border-radius: 50px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="menu-button" onclick="toggleMenu()">☰</div>
+  <div id="menu" class="menu">
+    <a href="indexx.html">アップデート</a><br>
+    <a href="#menu2">メニュー２</a><br>
+    <a href="#menu3">メニュー３</a>
+  </div>
+  
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+      } else {
+        menu.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
+
+
   
