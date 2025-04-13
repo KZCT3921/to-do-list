@@ -1,6 +1,40 @@
 <h1>フィードバック</h1>
     <h1><a href="https://docs.google.com/forms/d/e/1FAIpQLSdztmRzAX0Ftg5msCIAyJXtGIDRh9bRr9QmjEfpJsccEoiu-Q/viewform?usp=header">フォーム</a>
-　　      <h1><a href="https://docs.google.com/forms/d/e/1FAIpQLScZrAfjFMvjQRN4RbQmBMq_vZ1imUg7idudjK0IDY-vcgvqwA/viewform?usp=header">関係者フォーム</a>
+　　      
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>パスワード認証</title>
+</head>
+<body>
+
+<h2>パスワードを入力してください</h2>
+
+<input type="password" id="passwordInput" placeholder="パスワードを入力">
+<button onclick="checkPassword()">送信</button>
+
+<p id="error" style="color: red;"></p>
+
+<script>
+function checkPassword() {
+  const password = document.getElementById("passwordInput").value;
+  const correctPassword = "1234"; // ←ここに好きなパスワードを書いてね
+  const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLScZrAfjFMvjQRN4RbQmBMq_vZ1imUg7idudjK0IDY-vcgvqwA/viewform?usp=header"; // ←ここにGoogleフォームのURLを書く
+
+  if (password === correctPassword) {
+    window.location.href = formUrl;
+  } else {
+    document.getElementById("error").textContent = "パスワードが違います。";
+  }
+}
+</script>
+
+</body>
+</html>
+
 
 
 
