@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head><meta name="viewport" content="width=device-width, initial-scale=5.0">
+<head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>やることリスト</title>
   <style>
     input[type="text"] {
@@ -34,6 +35,11 @@
       border-radius: 5px;
       font-size: 18px;
     }
+
+    .container {
+  width: 1200px;
+}
+
   </style>
 </head>
 <body>
@@ -386,11 +392,6 @@ document.getElementById('todoInput').addEventListener('keypress', function(event
 
 
 
-
-        <!DOCTYPE html>
-<html lang="ja">
-<head>
-  <title>アップデート履歴</title>
   <style>
     body {
       margin: 0;
@@ -489,4 +490,12 @@ document.getElementById('todoInput').addEventListener('keypress', function(event
       background-color: #eee;
     }
   </style>
+  
+
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 10px;
+      font-size: 14px;
+    }
+  }
   
