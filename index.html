@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+<head><meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta charset="UTF-8">
   <title>やることリスト</title>
   <style>
-    input[type="text"] 
+    input[type="text"] {
       padding: 10px;
       font-size: 18px;
       width: 300px;
-      margin-right: 10px;
+      margin-right: -8px;
+    }
     button {
       padding: 10px 20px;
       font-size: 18px;
@@ -375,6 +377,7 @@ document.getElementById('todoInput').addEventListener('keypress', function(event
     .hamburger {
       font-size: 30px;
       cursor: pointer;
+      -webkit-user-select: none;
       user-select: none;
       position: fixed;
       top: 20px;
@@ -382,16 +385,17 @@ document.getElementById('todoInput').addEventListener('keypress', function(event
     }
   </style>
 
-<!DOCTYPE html>
-<html lang="ja">
-<head><link rel="manifest" href="manifest.json">
 
-  <meta charset="UTF-8">
-  <title>やることリスト</title>
+
+
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>アップデート履歴</title>
   <style>
     body {
       margin: 0;
-   <!--- 
+    }
     .menu-button {
       position: fixed; /* 固定する！ */
       top: 10px;        /* 上から10px */
@@ -401,21 +405,33 @@ document.getElementById('todoInput').addEventListener('keypress', function(event
       z-index: 1000;    /* 最前面に */
     }
     .menu {
-      display: none;
+      display: fixed;
       background-color: #eee;
       position: fixed;
-      top: 80px;
-      right: 10px;
-      padding: 10px;
+      top: 400px;
+      right: 80px;
+      width: 220px;
+      background: 50px;
+      padding: 2opx;
       border-radius: 50px;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+      opacity: 0;    /*　最初は透明*/
+      transform: translateY(-50px) scale(0.9); /*ちょっと上にずらす＋小さくする*/
+      pointer-events: none;     /*　触れないようにする*/
+      transition: all 1.0s ease;
+    }
+    .menu.show {
+        opacity: 10;     /*透明じゃなくなる*/
+        transform: translateY(0) scale(1); /*正しい位置に戻る+元の大きさに*/
+        pointer-events: auto;    /* 触れるようにする*/
     }
   </style>
 </head>
 <body>
   <div class="menu-button" onclick="toggleMenu()">☰</div>
   <div id="menu" class="menu">
-    <h1><a href="index2.html">アップデート</a><br>
+    <a href="index.html">やることリスト</a><br>
     <a href="index3.html">フィードバック</a><br>
     <a href="index4.html">開発者</a>
   </div>
@@ -424,15 +440,54 @@ document.getElementById('todoInput').addEventListener('keypress', function(event
   <script>
     function toggleMenu() {
       const menu = document.getElementById('menu');
-      if (menu.style.display === 'block') {
-        menu.style.display = 'none';
-      } else z{
-        menu.style.display = 'block';
+      menu.classList.toggle('show'); // これだけ!!
       }
-    }
   </script>
 </body>
 </html>
 
---->
-
+<!- CSS強化 ->
+<style>
+    body {
+      font-family: "Arial", sans-serif;
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      color: #333;
+      text-align: center;
+      padding: 50px;
+    }
+  
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+  
+    p {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+  
+    img {
+      border-radius: 50%;
+      margin-top: 20px;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+  
+    a button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  
+    a button:hover {
+      background-color: #eee;
+    }
+  </style>
+  
